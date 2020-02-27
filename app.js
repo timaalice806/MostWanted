@@ -5,7 +5,7 @@ function app(people) {
   ).toLowerCase();
   switch (searchType) {
     case "yes":
-    mainMenu(searchByName(people), people)            
+    displayPerson(searchByName(people))           
       break;
     case "no":
       searchBySingleTrait(people)
@@ -63,63 +63,64 @@ function searchByName(people) {
       return el;
     }
   });
-
+return filteredPeople[0];
   // TODO: What to do with filteredPeople?
 }
 function searchBySingleTrait (people) {
-  let criteriaType = promptFor("Search by trait: Gender, D.O.B(MMDDYYYY), Height, Weight, Eye Color, Occupation", chars).toLowerCase();
-  var criteriaArr = [];
+  let criteriaType = promptFor("Search by trait: Gender, D.O.B(MM/DD/YYYY), Height, Weight, Eye Color, Occupation", chars).toLowerCase();
+  let criteriaArr = [];
 switch (criteriaType) {
   case "gender":
   let enteredGender = prompt("Please enter 'male' or 'female':")
-  var criteriaArr = people.filter(function(el){
+  let criteriaArr = people.filter(function(el){
     if(el.gender == enteredGender){
       return true;
     }
+    return criteriaArr;
   })
     break;
   case "DOB":
     break;  
   case "height":
     let enteredHeight = prompt("Please enter 'height':")
-    var criteriaArr = people.filter(function(el){
+    let heightCriteriaArr = people.filter(function(el){
       if(el.height == parseInt(enteredHeight)){
         return true;
       }
+      return heightCriteriaArr;
     })
-    console.log(criteriaArr)
     break;
   case "weight":
     let enteredWeight = prompt("Please enter 'weight':")
-    var criteriaArr = people.filter(function(el){
+    let weightCriteriaArr = people.filter(function(el){
       if(el.weight == parseInt(enteredWeight)){
         return true;
       }
+      return weightCriteriaArr;
     })
-    console.log(criteriaArr)
     break;
   case "eye color":
     let enteredColor = prompt("Please enter 'eye color':")
-    var criteriaArr = people.filter(function(el){
+    let colorCriteriaArr = people.filter(function(el){
       if(el.eyeColor == enteredColor){
         return true;
       }
+      return colorCriteriaArr;
     })
-    console.log(criteriaArr)
     break; 
   case "occupation":
     let enteredOcc = prompt("Please enter 'occupation':")
-    var criteriaArr = people.filter(function(el){
+    let occCriteriaArr = people.filter(function(el){
       if(el.occupation == enteredOcc){
         return true;
       }
+      return occCriteriaArr;
     })
-    console.log(criteriaArr)
     break; 
   default:
     alert("Please enter a valid response.")
     searchBySingleTrait(people)
-    return;    
+    break;
 }
 }
 
