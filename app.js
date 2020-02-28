@@ -8,7 +8,8 @@ function app(people) {
       mainMenu(searchByName(people), [0]);
       break;
     case "no":
-      searchBySingleTrait(people);
+      //searchBySingleTrait(people);
+      searchByMultipleTraits();
       break;
     default:
       alert("Invalid input. Please try again!");
@@ -16,7 +17,6 @@ function app(people) {
       break;
   }
 }
-
 
 // Menu function to call once you find who you are looking for
 function mainMenu(person, people) {
@@ -127,26 +127,26 @@ const searchByMultipleTraits = (people) => {
   let dob = promptFor("Please enter a dob, please enter n/a if unknow: ", chars);
   let occupation = promptFor("Please enter their occupation, please enter n/a if unknow: ", chars);
   let eyeColor = promptFor("Please enter a eyeColor, please enter n/a if unknow: ", chars);
-  let weight = promptFor("Please enter a enter, please enter n/a if unknow: ", chars);
+  let weight = promptFor("Please enter a weight, please enter n/a if unknow: ", chars);
 
   let peopleSearch = people;
 
   peopleSearch = peopleSearch.filter(el => {
     if(gender == "n/a"){
-      return peopleSearch
+      return peopleSearch;
     }else if(el.gender == gender){
-      return el
+      return el;
     } 
   })
   peopleSearch = peopleSearch.filter(el => {
-    if(gender == "n/a"){
+    if(dob == "n/a"){
       return peopleSearch
     }else if(el.dob == dob){
       return el
     } 
   })
   peopleSearch = peopleSearch.filter(el => {
-    if(gender == "n/a"){
+    if(occupation == "n/a"){
       return peopleSearch
     }else if(el.occupation == occupation){
       return el
@@ -174,8 +174,8 @@ function displayPeople(people) {
   alert("Result: " + people.map(function(person){
     return person.firstName + " " + person.lastName;
   }).join("\n")
-}
-
+  )}
+  
 function displayPerson(person) {
   // print all of the information about a person:
   // height, weight, age, name, occupation, eye color.
