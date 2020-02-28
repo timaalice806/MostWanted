@@ -121,7 +121,7 @@ function searchBySingleTrait(people) {
   }
 }
 
-function earchByMultipleTraits(people) {
+function searchByMultipleTraits(people) {
   let gender = promptFor(
     "Please enter a gender, please enter n/a if unknow: ",
     chars
