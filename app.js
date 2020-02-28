@@ -74,13 +74,12 @@ function searchBySingleTrait(people) {
   let enteredGender = prompt("Please enter 'male' or 'female':");
   switch (criteriaType) {
     case "gender":
-      let criteriaArr = people.filter(function(el) {
+      criteriaArr = people.filter(function(el) {
         if (el.gender == enteredGender) {
           return true;
         }
-        return criteriaArr;
       });
-      break;
+      return criteriaArr;
     case "DOB":
       break;
     case "height":
@@ -89,36 +88,32 @@ function searchBySingleTrait(people) {
         if (el.height == parseInt(enteredHeight)) {
           return true;
         }
-        return heightCriteriaArr;
       });
-      break;
+      return heightCriteriaArr;
     case "weight":
       let enteredWeight = prompt("Please enter 'weight':");
       let weightCriteriaArr = people.filter(function(el) {
         if (el.weight == parseInt(enteredWeight)) {
           return true;
         }
-        return weightCriteriaArr;
       });
-      break;
+      return weightCriteriaArr;
     case "eye color":
       let enteredColor = prompt("Please enter 'eye color':");
       let colorCriteriaArr = people.filter(function(el) {
         if (el.eyeColor == enteredColor) {
           return true;
         }
-        return colorCriteriaArr;
       });
-      break;
+      return colorCriteriaArr;
     case "occupation":
       let enteredOcc = prompt("Please enter 'occupation':");
       let occCriteriaArr = people.filter(function(el) {
         if (el.occupation == enteredOcc) {
           return true;
         }
-        return occCriteriaArr;
       });
-      break;
+      return occCriteriaArr;
     default:
       alert("Please enter a valid response.");
       searchBySingleTrait(people);
@@ -126,15 +121,15 @@ function searchBySingleTrait(people) {
   }
 }
 
+function searchByMultipleTraits(weight, height, gender, dob, ){
+
+}
+
 // alerts a list of people
 function displayPeople(people) {
-  alert(
-    people
-      .map(function(person) {
-        return person.firstName + " " + person.lastName;
-      })
-      .join("\n")
-  );
+  alert("Result: " + people.map(function(person){
+    return person.firstName + " " + person.lastName;
+  }).join("\n")
 }
 
 function displayPerson(person) {
@@ -151,6 +146,11 @@ function displayPerson(person) {
   personInfo += "Eye Color: " + person.eyeColor + "\n";
   // TODO: finish getting the rest of the information to display
   alert(personInfo);
+}
+
+function displayFamily(person, people){
+  let perents = [] 
+  
 }
 
 // function that prompts and validates user input
