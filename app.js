@@ -17,6 +17,7 @@ function app(people) {
   }
 }
 
+
 // Menu function to call once you find who you are looking for
 function mainMenu(person, people) {
   /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
@@ -121,8 +122,51 @@ function searchBySingleTrait(people) {
   }
 }
 
-function searchByMultipleTraits(weight, height, gender, dob, ){
+const searchByMultipleTraits = (people) => {
+  let gender = promptFor("Please enter a gender, please enter n/a if unknow: ", chars);
+  let dob = promptFor("Please enter a dob, please enter n/a if unknow: ", chars);
+  let occupation = promptFor("Please enter their occupation, please enter n/a if unknow: ", chars);
+  let eyeColor = promptFor("Please enter a eyeColor, please enter n/a if unknow: ", chars);
+  let weight = promptFor("Please enter a enter, please enter n/a if unknow: ", chars);
 
+  let peopleSearch = people;
+
+  peopleSearch = peopleSearch.filter(el => {
+    if(gender == "n/a"){
+      return peopleSearch
+    }else if(el.gender == gender){
+      return el
+    } 
+  })
+  peopleSearch = peopleSearch.filter(el => {
+    if(gender == "n/a"){
+      return peopleSearch
+    }else if(el.dob == dob){
+      return el
+    } 
+  })
+  peopleSearch = peopleSearch.filter(el => {
+    if(gender == "n/a"){
+      return peopleSearch
+    }else if(el.occupation == occupation){
+      return el
+    } 
+  })
+  peopleSearch = peopleSearch.filter(el => {
+    if(eyeColor == "n/a"){
+      return peopleSearch
+    }else if(el.eyeColor == eyeColor){
+      return el
+    } 
+  })
+  peopleSearch = peopleSearch.filter(el => {
+    if(weight == "n/a"){
+      return peopleSearch
+    }else if(el.weight == weight){
+      return el
+    } 
+  })
+  return peopleSearch[0];
 }
 
 // alerts a list of people
