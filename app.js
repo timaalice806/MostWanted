@@ -5,10 +5,9 @@ function app(people) {
   ).toLowerCase();
   switch (searchType) {
     case "yes":
-      mainMenu(searchByName(people), person);
+      mainMenu(searchByName(people), [0]);
       break;
     case "no":
-      mainMenu(searchByName(people), people);
       break;
     default:
       alert("Invalid input. Please try again!");
