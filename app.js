@@ -122,60 +122,80 @@ function searchBySingleTrait(people) {
   }
 }
 
-const searchByMultipleTraits = (people) => {
-  let gender = promptFor("Please enter a gender, please enter n/a if unknow: ", chars);
-  let dob = promptFor("Please enter a dob, please enter n/a if unknow: ", chars);
-  let occupation = promptFor("Please enter their occupation, please enter n/a if unknow: ", chars);
-  let eyeColor = promptFor("Please enter a eyeColor, please enter n/a if unknow: ", chars);
-  let weight = promptFor("Please enter a weight, please enter n/a if unknow: ", chars);
+function searchByMultipleTraits(people) {
+  let gender = promptFor(
+    "Please enter a gender, please enter n/a if unknow: ",
+    chars
+  );
+  let dob = promptFor(
+    "Please enter a dob, please enter n/a if unknow: ",
+    chars
+  );
+  let occupation = promptFor(
+    "Please enter their occupation, please enter n/a if unknow: ",
+    chars
+  );
+  let eyeColor = promptFor(
+    "Please enter a eyeColor, please enter n/a if unknow: ",
+    chars
+  );
+  let weight = promptFor(
+    "Please enter weight, please enter n/a if unknow: ",
+    chars
+  );
 
   let peopleSearch = people;
 
-  peopleSearch = peopleSearch.filter(el => {
-    if(gender == "n/a"){
+  peopleSearch = peopleSearch.filter(function(el) {
+    if (gender == "n/a") {
       return peopleSearch;
-    }else if(el.gender == gender){
+    } else if (el.gender == gender) {
       return el;
-    } 
-  })
-  peopleSearch = peopleSearch.filter(el => {
-    if(dob == "n/a"){
-      return peopleSearch
-    }else if(el.dob == dob){
-      return el
-    } 
-  })
-  peopleSearch = peopleSearch.filter(el => {
-    if(occupation == "n/a"){
-      return peopleSearch
-    }else if(el.occupation == occupation){
-      return el
-    } 
-  })
-  peopleSearch = peopleSearch.filter(el => {
-    if(eyeColor == "n/a"){
-      return peopleSearch
-    }else if(el.eyeColor == eyeColor){
-      return el
-    } 
-  })
-  peopleSearch = peopleSearch.filter(el => {
-    if(weight == "n/a"){
-      return peopleSearch
-    }else if(el.weight == weight){
-      return el
-    } 
-  })
+    }
+  });
+  peopleSearch = peopleSearch.filter(function(el) {
+    if (dob == "n/a") {
+      return peopleSearch;
+    } else if (el.dob == dob) {
+      return el;
+    }
+  });
+  peopleSearch = peopleSearch.filter(function(el) {
+    if (occupation == "n/a") {
+      return peopleSearch;
+    } else if (el.occupation == occupation) {
+      return el;
+    }
+  });
+  peopleSearch = peopleSearch.filter(function(el) {
+    if (eyeColor == "n/a") {
+      return peopleSearch;
+    } else if (el.eyeColor == eyeColor) {
+      return el;
+    }
+  });
+  peopleSearch = peopleSearch.filter(function(el) {
+    if (weight == "n/a") {
+      return peopleSearch;
+    } else if (el.weight == weight) {
+      return el;
+    }
+  });
   return peopleSearch[0];
 }
 
 // alerts a list of people
 function displayPeople(people) {
-  alert("Result: " + people.map(function(person){
-    return person.firstName + " " + person.lastName;
-  }).join("\n")
-  )}
-  
+  alert(
+    "Result: " +
+      people
+        .map(function(person) {
+          return person.firstName + " " + person.lastName;
+        })
+        .join("\n")
+  );
+}
+
 function displayPerson(person) {
   // print all of the information about a person:
   // height, weight, age, name, occupation, eye color.
@@ -192,9 +212,8 @@ function displayPerson(person) {
   alert(personInfo);
 }
 
-function displayFamily(person, people){
-  let perents = [] 
-  
+function displayFamily(person, people) {
+  let perents = [];
 }
 
 // function that prompts and validates user input
