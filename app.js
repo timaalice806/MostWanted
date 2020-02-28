@@ -9,7 +9,7 @@ function app(people) {
       break;
     case "no":
       //searchBySingleTrait(people);
-      searchByMultipleTraits();
+      searchByMultipleTraits(people);
       break;
     default:
       alert("Invalid input. Please try again!");
@@ -124,27 +124,28 @@ function searchBySingleTrait(people) {
 
 function searchByMultipleTraits(people) {
   let gender = promptFor(
-    "Please enter a gender, please enter n/a if unknow: ",
+    "Please enter a gender, please enter n/a if unknown: ",
     chars
   );
   let dob = promptFor(
-    "Please enter a dob, please enter n/a if unknow: ",
+    "Please enter a D.O.B (do not enter 0 before single digit months), please enter n/a if unknown: ",
     chars
   );
   let occupation = promptFor(
-    "Please enter their occupation, please enter n/a if unknow: ",
+    "Please enter their occupation, please enter n/a if unknown: ",
     chars
   );
   let eyeColor = promptFor(
-    "Please enter a eyeColor, please enter n/a if unknow: ",
+    "Please enter a eyeColor, please enter n/a if unknown: ",
     chars
   );
   let weight = promptFor(
-    "Please enter weight, please enter n/a if unknow: ",
+    "Please enter weight, please enter n/a if unknown: ",
     chars
   );
-
-  let peopleSearch = people;
+//////////////////////////////////////////////////////////////////////////////
+  let peopleSearch = [];
+  peopleSearch = people;
 
   peopleSearch = peopleSearch.filter(function(el) {
     if (gender == "n/a") {
@@ -213,8 +214,23 @@ function displayPerson(person) {
 }
 
 function displayFamily(person, people) {
-  let perents = [];
+  let parents = [];
+  parents = people;
+
+  if(parents[0].id == el.id){
+    return el;
+  }if(el.parents.length > 0){
+    for(let i = 0; i < el.parents.length; i++){
+      return el
+    } if(el.currentSpouse != null){
+      return el.currentSpouse
+    }
+    parents += `parents: ${el.parents.firstName} ${el.parents.lastName}`
+    parents += `spouse: ${el.currentSpouse.firstName} ${el.currentSpouse.lastName}`
+    alert(parents);
+  }
 }
+  
 
 // function that prompts and validates user input
 function promptFor(question, callback) {
