@@ -8,9 +8,6 @@ function app(people) {
       mainMenu(searchByName(people), [0]);
       break;
     case "no":
-      displayPerson(searchByName(people));
-      break;
-    case "no":
       searchBySingleTrait(people);
       break;
     default:
@@ -39,10 +36,9 @@ function mainMenu(person, people) {
 
   switch (displayOption) {
     case "info":
-      // TODO: get person's info
+      displayPerson(person);
       break;
     case "family":
-      // TODO: get person's family
       break;
     case "descendants":
       // TODO: get person's descendants
@@ -75,9 +71,9 @@ function searchBySingleTrait(people) {
     chars
   ).toLowerCase();
   let criteriaArr = [];
+  let enteredGender = prompt("Please enter 'male' or 'female':");
   switch (criteriaType) {
     case "gender":
-      let enteredGender = prompt("Please enter 'male' or 'female':");
       let criteriaArr = people.filter(function(el) {
         if (el.gender == enteredGender) {
           return true;
@@ -146,6 +142,13 @@ function displayPerson(person) {
   // height, weight, age, name, occupation, eye color.
   var personInfo = "First Name: " + person.firstName + "\n";
   personInfo += "Last Name: " + person.lastName + "\n";
+  personInfo += "Gender: " + person.gender + "\n";
+  personInfo += "Age: " + new Date(person.dob) + "\n";
+  personInfo += "Date of Birth: " + person.dob + "\n";
+  personInfo += "Height: " + person.height + "\n";
+  personInfo += "Weight: " + person.weight + "\n";
+  personInfo += "Occupation: " + person.occupation + "\n";
+  personInfo += "Eye Color: " + person.eyeColor + "\n";
   // TODO: finish getting the rest of the information to display
   alert(personInfo);
 }
