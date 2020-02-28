@@ -8,6 +8,10 @@ function app(people) {
       mainMenu(searchByName(people), [0]);
       break;
     case "no":
+      displayPerson(searchByName(people));
+      break;
+    case "no":
+      searchBySingleTrait(people);
       break;
     default:
       alert("Invalid input. Please try again!");
@@ -62,8 +66,68 @@ function searchByName(people) {
       return el;
     }
   });
-
+  return filteredPeople[0];
   // TODO: What to do with filteredPeople?
+}
+function searchBySingleTrait(people) {
+  let criteriaType = promptFor(
+    "Search by trait: Gender, D.O.B(MM/DD/YYYY), Height, Weight, Eye Color, Occupation",
+    chars
+  ).toLowerCase();
+  let criteriaArr = [];
+  switch (criteriaType) {
+    case "gender":
+      let enteredGender = prompt("Please enter 'male' or 'female':");
+      let criteriaArr = people.filter(function(el) {
+        if (el.gender == enteredGender) {
+          return true;
+        }
+        return criteriaArr;
+      });
+      break;
+    case "DOB":
+      break;
+    case "height":
+      let enteredHeight = prompt("Please enter 'height':");
+      let heightCriteriaArr = people.filter(function(el) {
+        if (el.height == parseInt(enteredHeight)) {
+          return true;
+        }
+        return heightCriteriaArr;
+      });
+      break;
+    case "weight":
+      let enteredWeight = prompt("Please enter 'weight':");
+      let weightCriteriaArr = people.filter(function(el) {
+        if (el.weight == parseInt(enteredWeight)) {
+          return true;
+        }
+        return weightCriteriaArr;
+      });
+      break;
+    case "eye color":
+      let enteredColor = prompt("Please enter 'eye color':");
+      let colorCriteriaArr = people.filter(function(el) {
+        if (el.eyeColor == enteredColor) {
+          return true;
+        }
+        return colorCriteriaArr;
+      });
+      break;
+    case "occupation":
+      let enteredOcc = prompt("Please enter 'occupation':");
+      let occCriteriaArr = people.filter(function(el) {
+        if (el.occupation == enteredOcc) {
+          return true;
+        }
+        return occCriteriaArr;
+      });
+      break;
+    default:
+      alert("Please enter a valid response.");
+      searchBySingleTrait(people);
+      break;
+  }
 }
 
 // alerts a list of people
