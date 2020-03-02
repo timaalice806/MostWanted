@@ -8,7 +8,7 @@ function app(people) {
       mainMenu(searchByName(people), [0]);
       break;
     case "no":
-      searchBySingleTrait(people);
+      searchByMultipleTraits(people);
       break;
     default:
       alert("Invalid input. Please try again!");
@@ -63,7 +63,6 @@ function searchByName(people) {
     }
   });
   return filteredPeople[0];
-  // TODO: What to do with filteredPeople?
 }
 function searchBySingleTrait(people) {
   let criteriaType = promptFor(
@@ -81,9 +80,12 @@ function searchBySingleTrait(people) {
       });
       return criteriaArr;
     case "DOB":
+      let enteredDob = prompt("Please enter 'D.O.B' as follows MM/DD/YYYY (if month is single digit do not include zero):")
       criteriaArr = people.filter(function(el) {
         if (el.dob == enteredDob) {
           return true;
+        }
+      });
     case "height":
       let enteredHeight = prompt("Please enter 'height':");
       let heightCriteriaArr = people.filter(function(el) {
@@ -239,6 +241,27 @@ function getDescendants(person, people) {
     }
   });
   return descendants;
+}
+function getImmediateFamily(person, people) {
+  let parentArray = people.filter(function(el) {
+    if (person.currentSpouse === el.id) {
+      return true;
+    } else if (checkChild(person, el)) {
+      return true;
+    }
+  });
+  return parentArray;
+}
+function checkChild(child1, child2) {
+  let parents = child2.parents;
+  if (parents.length > 0) {
+    for (let i = 0; i < parents.length; i++) {
+      if (parents[i] === child1.id) {
+        return true;
+      }
+    }
+  }
+  return false;
 }
 
 // function that prompts and validates user input
