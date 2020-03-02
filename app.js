@@ -8,8 +8,7 @@ function app(people) {
       mainMenu(searchByName(people), [0]);
       break;
     case "no":
-      //searchBySingleTrait(people);
-      searchByMultipleTraits(people);
+      searchBySingleTrait(people);
       break;
     default:
       alert("Invalid input. Please try again!");
@@ -124,28 +123,27 @@ function searchBySingleTrait(people) {
 
 function searchByMultipleTraits(people) {
   let gender = promptFor(
-    "Please enter a gender, please enter n/a if unknown: ",
+    "Please enter a gender, please enter n/a if unknow: ",
     chars
   );
   let dob = promptFor(
-    "Please enter a D.O.B (do not enter 0 before single digit months), please enter n/a if unknown: ",
+    "Please enter a dob, please enter n/a if unknow: ",
     chars
   );
   let occupation = promptFor(
-    "Please enter their occupation, please enter n/a if unknown: ",
+    "Please enter their occupation, please enter n/a if unknow: ",
     chars
   );
   let eyeColor = promptFor(
-    "Please enter a eyeColor, please enter n/a if unknown: ",
+    "Please enter a eyeColor, please enter n/a if unknow: ",
     chars
   );
   let weight = promptFor(
-    "Please enter weight, please enter n/a if unknown: ",
+    "Please enter weight, please enter n/a if unknow: ",
     chars
   );
-//////////////////////////////////////////////////////////////////////////////
-  let peopleSearch = [];
-  peopleSearch = people;
+
+  let peopleSearch = people;
 
   peopleSearch = peopleSearch.filter(function(el) {
     if (gender == "n/a") {
@@ -213,24 +211,33 @@ function displayPerson(person) {
   alert(personInfo);
 }
 
-function displayFamily(person, people) {
-  let parents = [];
-  parents = people;
+function newDescendants(person, people) {
+  var descendant = getDescendants(person, people);
+  var descendantsToReturn = "";
 
-  if(parents[0].id == el.id){
-    return el;
-  }if(el.parents.length > 0){
-    for(let i = 0; i < el.parents.length; i++){
-      return el
-    } if(el.currentSpouse != null){
-      return el.currentSpouse
+  for (var i = 0; i < descendant.length; i++) {
+    descendantsToReturn +=
+      descendant[i].firstName + " " + descendant[i].lastName;
+    if (i >= 0) {
+      var Children = newDescendants(descendant[i], people);
+      descendantsToReturn += Children;
     }
-    parents += `parents: ${el.parents.firstName} ${el.parents.lastName}`
-    parents += `spouse: ${el.currentSpouse.firstName} ${el.currentSpouse.lastName}`
-    alert(parents);
   }
+  return descendantsToReturn;
 }
-  
+
+function getDescendants(person, people) {
+  var descendants = [];
+
+  descendants = people.filter(function(el) {
+    if (element.parents.length === 0) {
+      return false;
+    } else if (el.parents[0] === person.id || el.parents[1] === person.id) {
+      return true;
+    }
+  });
+  return descendants;
+}
 
 // function that prompts and validates user input
 function promptFor(question, callback) {
