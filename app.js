@@ -41,7 +41,7 @@ function mainMenu(person, people) {
     case "family":
       break;
     case "descendants":
-      // TODO: get person's descendants
+      newDescendants(person, people);
       break;
     case "restart":
       app(people); // restart
@@ -81,7 +81,9 @@ function searchBySingleTrait(people) {
       });
       return criteriaArr;
     case "DOB":
-      break;
+      criteriaArr = people.filter(function(el) {
+        if (el.dob == enteredDob) {
+          return true;
     case "height":
       let enteredHeight = prompt("Please enter 'height':");
       let heightCriteriaArr = people.filter(function(el) {
@@ -127,7 +129,7 @@ function searchByMultipleTraits(people) {
     chars
   );
   let dob = promptFor(
-    "Please enter a dob, please enter n/a if unknow: ",
+    "Please enter a D.O.B (if month is single digit do not include zero), please enter n/a if unknow: ",
     chars
   );
   let occupation = promptFor(
