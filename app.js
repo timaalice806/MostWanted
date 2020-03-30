@@ -8,7 +8,7 @@ function app(people) {
       mainMenu(searchByName(people), [0]);
       break;
     case "no":
-      searchByMultipleTraits(people);
+      searchByMultipleTraits(people, [0]);
       break;
     default:
       alert("Invalid input. Please try again!");
@@ -37,6 +37,7 @@ function mainMenu(person, people) {
   switch (displayOption) {
     case "info":
       displayPerson(person);
+      mainMenu(person, people);
       break;
     case "family":
       break;
@@ -80,7 +81,9 @@ function searchBySingleTrait(people) {
       });
       return criteriaArr;
     case "DOB":
-      let enteredDob = prompt("Please enter 'D.O.B' as follows MM/DD/YYYY (if month is single digit do not include zero):")
+      let enteredDob = prompt(
+        "Please enter 'D.O.B' as follows MM/DD/YYYY (if month is single digit do not include zero):"
+      );
       criteriaArr = people.filter(function(el) {
         if (el.dob == enteredDob) {
           return true;
