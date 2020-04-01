@@ -66,6 +66,10 @@ function mainMenu(person, people) {
       return mainMenu(person, people); // ask again
   }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1050d59f3c417b3cefee149f31e10874ec8b3162
 function searchForDescendants(person, newFamilyTree) {
   var personTree;
   for (i in newFamilyTree) {
@@ -77,6 +81,10 @@ function searchForDescendants(person, newFamilyTree) {
   var descendantsList = childrenOfDescendants(personTree, newDescendants);
   return descendantsList;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1050d59f3c417b3cefee149f31e10874ec8b3162
 function childrenOfDescendants(personTree, descendants) {
   for (var childID in personTree["children"]) {
     descendants.push(personTree["children"][childID]);
@@ -86,6 +94,10 @@ function childrenOfDescendants(personTree, descendants) {
   }
   return descendants;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1050d59f3c417b3cefee149f31e10874ec8b3162
 function searchByTraits(people) {
   var person;
   var traitType = promptFor(
@@ -141,6 +153,10 @@ function searchByTraits(people) {
   }
   return person;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1050d59f3c417b3cefee149f31e10874ec8b3162
 function mapFamilyTrees(people) {
   var tree = [],
     mappedNewPeople = {},
@@ -151,6 +167,10 @@ function mapFamilyTrees(people) {
     mappedNewPeople[pEl.id] = pEl;
     mappedNewPeople[pEl.id]["children"] = [];
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1050d59f3c417b3cefee149f31e10874ec8b3162
   for (var id in mappedNewPeople) {
     if (mappedNewPeople.hasOwnProperty(id)) {
       mappedEl = mappedNewPeople[id];
@@ -167,6 +187,10 @@ function mapFamilyTrees(people) {
   }
   return mappedNewPeople;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1050d59f3c417b3cefee149f31e10874ec8b3162
 function filteredPeopleCheck(filteredPeople) {
   var person;
   if (filteredPeople.length === 1) {
@@ -182,6 +206,10 @@ function filteredPeopleCheck(filteredPeople) {
   }
   return person;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1050d59f3c417b3cefee149f31e10874ec8b3162
 function searchByName(people) {
   var firstName = promptFor("What is the person's first name?", chars);
   var lastName = promptFor("What is the person's last name?", chars);
@@ -190,6 +218,10 @@ function searchByName(people) {
       return el;
     }
   });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1050d59f3c417b3cefee149f31e10874ec8b3162
   if (filteredPeople.length === 1) {
     var person = filteredPeople[0];
     return person;
@@ -200,6 +232,10 @@ function searchByName(people) {
     return person;
   }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1050d59f3c417b3cefee149f31e10874ec8b3162
 function searchForFamily(person, familyTrees, people) {
   // find the person Tree, find immediate family members (parents and siblings; children optional) and display names WITH Relation
   var personTree;
@@ -270,6 +306,10 @@ function searchForFamily(person, familyTrees, people) {
   }
   return familyList;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1050d59f3c417b3cefee149f31e10874ec8b3162
 // alerts the family list
 function displayFamily(familyList) {
   alert(
@@ -282,6 +322,10 @@ function displayFamily(familyList) {
       .join("\n")
   );
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1050d59f3c417b3cefee149f31e10874ec8b3162
 function searchBySingleTrait(people, response, trait) {
   let filteredPeople = people.filter(function(el) {
     if (el[trait] === response) {
@@ -312,6 +356,10 @@ function displayPerson(person) {
   personInfo += "Occupation: " + person.occupation;
   alert(personInfo);
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1050d59f3c417b3cefee149f31e10874ec8b3162
 // function that prompts and validates user input
 function promptFor(question, callback) {
   do {
